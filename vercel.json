@@ -1,0 +1,17 @@
+{
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "redirects": [
+    {
+      "source": "/rajesh-portfolio",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/rajesh-portfolio/:path*",
+      "destination": "/:path*",
+      "permanent": false
+    }
+  ]
+}

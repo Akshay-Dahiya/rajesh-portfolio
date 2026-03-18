@@ -3,6 +3,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
 import { ScrollSmoother } from "gsap-trial/ScrollSmoother";
+import { withBasePath } from "./utils/basePath";
 import "./styles/Navbar.css";
 
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
@@ -42,15 +43,19 @@ const Navbar = () => {
   return (
     <>
       <div className="header">
-        <a href="/#" className="navbar-title" data-cursor="disable">
-          RC
+        <a
+          href={withBasePath("")}
+          className="navbar-title"
+          data-cursor="disable"
+        >
+          AD
         </a>
         <a
-          href="mailto:rajeshchittyal21@gmail.com"
+          href="mailto:akshaydahiya2004@gmail.com"
           className="navbar-connect"
           data-cursor="disable"
         >
-          rajeshchittyal21@gmail.com
+          akshaydahiya2004@gmail.com
         </a>
         <ul>
           <li>
@@ -60,7 +65,7 @@ const Navbar = () => {
           </li>
           <li>
             <a data-href="#work" href="#work">
-              <HoverLinks text="WORK" />
+              <HoverLinks text="PROJECTS" />
             </a>
           </li>
           <li>

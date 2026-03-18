@@ -5,8 +5,8 @@ const Career = () => {
     <div className="career-section section-container">
       <div className="career-container">
         <h2>
-          My career <span>&</span>
-          <br /> experience
+          Education <span>&</span>
+          <br /> Training
         </h2>
         <div className="career-info">
           <div className="career-timeline">
@@ -15,43 +15,38 @@ const Career = () => {
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Full Stack Developer</h4>
-                <h5>Ikshan</h5>
+                <h4>B.Tech – Computer Science (AI/ML)</h4>
+                <h5>SGT University</h5>
               </div>
-              <h3>2020</h3>
+              <h3>2026</h3>
             </div>
             <p>
-              Built 6+ complete applications using React.js. Integrated backend
-              authentication using Node.js & MongoDB. Created responsive UI/UX
-              and designed wireframes using Figma.
+              Pursuing Bachelor of Technology with a focus on Artificial Intelligence and Machine Learning.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Senior Full Stack Developer</h4>
-                <h5>Monocept (Max Life Insurance)</h5>
+                <h4>AI & Machine Learning Program</h4>
+                <h5>Samatrix.io</h5>
               </div>
-              <h3>2021</h3>
+              <h3>2024</h3>
             </div>
             <p>
-              Led two development teams on Mpro, a large-scale insurance
-              operations platform. Developed multiple modules using React.js &
-              migrated critical functionalities to Node.js microservices.
+              Completed comprehensive training in AI and Machine Learning program.
+              Focused on Deep Learning fundamentals and computer vision.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Full Stack Developer</h4>
-                <h5>Logic Loop</h5>
+                <h4>Selected AI Training</h4>
+                <h5>Anthropic</h5>
               </div>
-              <h3>NOW</h3>
+              <h3>Recent</h3>
             </div>
             <p>
-              Building Solid, a proprietary low-code platform using Angular,
-              Next.js & NestJS. Delivering production-ready CMS-based projects
-              including e-commerce, CRM, and import-export automation systems.
+              Completed specialized training courses including: Building with the Claude API, Claude Code in Action, Introduction to Model Context Protocol, and AI Fluency: Framework & Foundations.
             </p>
           </div>
         </div>

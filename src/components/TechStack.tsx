@@ -2,7 +2,6 @@ import * as THREE from "three";
 import { useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Environment } from "@react-three/drei";
-import { EffectComposer, N8AO } from "@react-three/postprocessing";
 import {
   BallCollider,
   Physics,
@@ -10,23 +9,24 @@ import {
   CylinderCollider,
   RapierRigidBody,
 } from "@react-three/rapier";
+import { withBasePath } from "./utils/basePath";
 
 const textureLoader = new THREE.TextureLoader();
 const imageUrls = [
-  "/images/react2.webp",
-  "/images/next2.webp",
-  "/images/node2.webp",
-  "/images/express.webp",
-  "/images/mongo.webp",
-  "/images/mysql.webp",
-  "/images/typescript.webp",
-  "/images/javascript.webp",
+  withBasePath("images/react2.webp"),
+  withBasePath("images/next2.webp"),
+  withBasePath("images/node2.webp"),
+  withBasePath("images/express.webp"),
+  withBasePath("images/mongo.webp"),
+  withBasePath("images/mysql.webp"),
+  withBasePath("images/typescript.webp"),
+  withBasePath("images/javascript.webp"),
 ];
 const textures = imageUrls.map((url) => textureLoader.load(url));
 
-const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
+const sphereGeometry = new THREE.SphereGeometry(1, 16, 16);
 
-const spheres = [...Array(30)].map(() => ({
+const spheres = [...Array(12)].map(() => ({
   scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
 }));
 
@@ -34,7 +34,7 @@ type SphereProps = {
   vec?: THREE.Vector3;
   scale: number;
   r?: typeof THREE.MathUtils.randFloatSpread;
-  material: THREE.MeshPhysicalMaterial;
+  material: THREE.MeshStandardMaterial;
   isActive: boolean;
 };
 
@@ -80,8 +80,6 @@ function SphereGeo({
         args={[0.15 * scale, 0.275 * scale]}
       />
       <mesh
-        castShadow
-        receiveShadow
         scale={scale}
         geometry={sphereGeometry}
         material={material}
@@ -154,14 +152,10 @@ const TechStack = () => {
   const materials = useMemo(() => {
     return textures.map(
       (texture) =>
-        new THREE.MeshPhysicalMaterial({
+        new THREE.MeshStandardMaterial({
           map: texture,
-          emissive: "#ffffff",
-          emissiveMap: texture,
-          emissiveIntensity: 0.3,
-          metalness: 0.5,
-          roughness: 1,
-          clearcoat: 0.1,
+          roughness: 0.8,
+          metalness: 0.2,
         })
     );
   }, []);
@@ -169,10 +163,14 @@ const TechStack = () => {
   return (
     <div className="techstack">
       <h2> My Techstack</h2>
+      <p style={{ textAlign: "center", width: "80%", margin: "0 auto", color: "#ccc", zIndex: 10, position: "relative", fontSize: "1.2rem", lineHeight: "1.8" }}>
+        Python, JavaScript, HTML, CSS, OpenCV, InsightFace, Deep Learning Fundamentals<br/>
+        OpenClaw, ClawDBot, n8n, Git, GitHub, VS Code, Jupyter Notebook, TouchDesigner, Power BI, Topaz
+      </p>
 
       <Canvas
-        shadows
-        gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
+        dpr={[1, 1.5]}
+        gl={{ alpha: true, stencil: false, depth: false, antialias: false, powerPreference: "high-performance" }}
         camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
         onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}
         className="tech-canvas"
@@ -183,8 +181,6 @@ const TechStack = () => {
           penumbra={1}
           angle={0.2}
           color="white"
-          castShadow
-          shadow-mapSize={[512, 512]}
         />
         <directionalLight position={[0, 5, -4]} intensity={2} />
         <Physics gravity={[0, 0, 0]}>
@@ -199,13 +195,10 @@ const TechStack = () => {
           ))}
         </Physics>
         <Environment
-          files="/models/char_enviorment.hdr"
+          files={withBasePath("models/char_enviorment.hdr")}
           environmentIntensity={0.5}
           environmentRotation={[0, 4, 2]}
         />
-        <EffectComposer enableNormalPass={false}>
-          <N8AO color="#0f002c" aoRadius={2} intensity={1.15} />
-        </EffectComposer>
       </Canvas>
     </div>
   );
