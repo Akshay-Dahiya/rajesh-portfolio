@@ -6,7 +6,7 @@ gsap.registerPlugin(SplitText);
 
 export function initialFX() {
   document.body.style.overflowY = "auto";
-  smoother.paused(false);
+  smoother?.paused(false);
   document.getElementsByTagName("main")[0].classList.add("main-active");
   gsap.to("body", {
     backgroundColor: "#0a0e17",
@@ -78,8 +78,10 @@ export function initialFX() {
   var landingText4 = SplitText.create(".landing-h2-1", TextProps);
   var landingText5 = SplitText.create(".landing-h2-2", TextProps);
 
-  LoopText(landingText2, landingText3);
-  LoopText(landingText4, landingText5);
+  if (!window.matchMedia("(pointer: coarse)").matches) {
+    LoopText(landingText2, landingText3);
+    LoopText(landingText4, landingText5);
+  }
 }
 
 function LoopText(

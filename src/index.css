@@ -1,27 +1,37 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Syne:wght@400..800&display=swap");
 
 :root {
   font-family: "Geist", sans-serif;
-
   font-optical-sizing: auto;
   font-style: normal;
   line-height: 1.5;
-  scroll-behavior: smooth;
-  color-scheme: light dark;
-  color: #eae5ec;
-  background-color: var(--backgroundColor);
-
+  color-scheme: dark;
+  color: #eaf4f8;
+  background-color: #050810;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
+  -webkit-tap-highlight-color: transparent;
   --accentColor: #5eead4;
+  --accentStrong: #2dd4bf;
   --backgroundColor: #0a0e17;
-  --vh: 100vh;
+  --surfaceColor: rgba(10, 16, 26, 0.76);
+  --surfaceStrong: rgba(10, 16, 26, 0.94);
+  --borderColor: rgba(255, 255, 255, 0.1);
+  --mutedColor: rgba(234, 244, 248, 0.72);
+  --headingFont: "Syne", sans-serif;
   --vh: 100svh;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 h1,
@@ -30,11 +40,27 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Geist", sans-serif;
+  font-family: var(--headingFont);
 }
 
 body {
-  overflow: hidden;
+  margin: 0;
+  min-height: 100svh;
+  background:
+    radial-gradient(circle at top left, rgba(45, 212, 191, 0.16), transparent 26%),
+    radial-gradient(circle at 82% 14%, rgba(125, 211, 252, 0.14), transparent 24%),
+    linear-gradient(180deg, #0b1220 0%, #07101b 42%, #050810 100%);
+  flex-grow: 1;
+  --cWidth: calc(100% - 32px);
+  --cMaxWidth: 1920px;
+  max-width: 100vw;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+::selection {
+  background: rgba(94, 234, 212, 0.24);
+  color: #f7ffff;
 }
 
 a {
@@ -44,6 +70,23 @@ a {
 
 a:hover {
   color: var(--accentColor);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+img,
+canvas,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 main {
@@ -63,18 +106,9 @@ main {
   }
 }
 
-body {
-  margin: 0;
-  height: auto;
-  background-color: #050810;
-  flex-grow: 1;
-  --cWidth: calc(100% - 30px);
-  --cMaxWidth: 1920px;
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-.main-body {
+#root,
+.main-body,
+.container-main {
   max-width: 100vw;
   overflow-x: hidden;
 }
@@ -103,25 +137,13 @@ body {
   flex-wrap: nowrap;
 }
 
-.techstack {
-  width: 100%;
-  position: relative;
-  overflow: clip;
-  height: var(--vh);
-  margin: auto;
-  margin-top: 50px;
-  margin-bottom: -100px;
-}
-
-.techstack h2 {
-  font-size: 80px;
-  text-align: center;
-  position: absolute;
-  width: 100%;
-  top: 120px;
-  left: 0;
-  font-weight: 400;
-  text-transform: uppercase;
+#about,
+#what-i-do,
+#career,
+#work,
+#tech-stack,
+#contact {
+  scroll-margin-top: 130px;
 }
 
 @media screen and (min-width: 768px) {
@@ -130,8 +152,17 @@ body {
   }
 }
 
-@media screen and (max-width: 900px) {
-  .techstack h2 {
-    font-size: 40px;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }

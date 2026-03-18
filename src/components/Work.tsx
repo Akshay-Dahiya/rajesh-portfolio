@@ -21,19 +21,24 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "Distributed Surveillance Intelligence",
-    category: "AI Surveillance Platform",
+    title: "Intelligent Real-Time Surveillance System",
+    category: "Occlusion-Aware Surveillance AI",
     year: "2025",
-    status: "Concept + Architecture",
+    status: "Real-Time Detection + Tracking",
     intro:
-      "A multi-agent surveillance concept focused on faster event detection and coordinated monitoring.",
+      "Built to detect and track objects from live video feeds while staying reliable under partial occlusion and visual distortions.",
     description:
-      "Designed as a distributed intelligence system where AI agents can observe multiple feeds, interpret what matters, and assist with real-time situational awareness. The project explores how surveillance workflows can become more scalable, more intelligent, and less dependent on manual review.",
-    tools: ["OpenClaw", "ClawDBot", "Agent Coordination", "Vision Workflows"],
+      "This real-time AI surveillance system combines object detection, multi-object tracking, motion analysis, and activity heatmaps to infer hidden or partially visible entities. It also includes event-driven alert mechanisms for loitering, restricted zone violations, and suspicious movement patterns, with automated notifications and image capture for faster response.",
+    tools: [
+      "Object Detection",
+      "Multi-Object Tracking",
+      "Motion Analysis",
+      "Activity Heatmaps",
+    ],
     highlights: [
-      "Explores coordinated decision-making across multiple monitoring points.",
-      "Surfaces notable events so human operators can focus on what matters first.",
-      "Pushes toward a more scalable surveillance analytics architecture.",
+      "Maintains tracking reliability even when objects are partially hidden or visually distorted.",
+      "Uses heatmaps and motion analysis to infer behavior beyond directly visible frames.",
+      "Triggers real-time alerts with image capture for loitering, restricted areas, and suspicious movement.",
     ],
   },
   {
