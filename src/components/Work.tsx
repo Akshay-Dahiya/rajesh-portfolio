@@ -21,35 +21,46 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "Intelligent Real-Time Surveillance System",
-    category: "Occlusion-Aware Surveillance AI",
+    title: "Gurugram RunClub – AI Fitness & Strava Analytics Platform",
+    category: "Full-Stack AI Coaching",
     year: "2025",
-    status: "Real-Time Detection + Tracking",
+    status: "Next.js + Supabase",
     intro:
-      "Built to detect and track objects from live video feeds while staying reliable under partial occlusion and visual distortions.",
+      "Built a marathon training and analytics experience that syncs Strava data and delivers contextual coaching advice in real time.",
     description:
-      "This real-time AI surveillance system combines object detection, multi-object tracking, motion analysis, and activity heatmaps to infer hidden or partially visible entities. It also includes event-driven alert mechanisms for loitering, restricted zone violations, and suspicious movement patterns, with automated notifications and image capture for faster response.",
-    tools: [
-      "Object Detection",
-      "Multi-Object Tracking",
-      "Motion Analysis",
-      "Activity Heatmaps",
-    ],
+      "Engineered a full-stack Next.js and Supabase dashboard to track training plans, synchronize Strava OAuth 2.0 activities, and ground an AI coach in athlete statistics, structured logs, and leaderboard rankings.",
+    tools: ["Next.js", "Supabase", "Strava API", "GPT-4o-mini"],
     highlights: [
-      "Maintains tracking reliability even when objects are partially hidden or visually distorted.",
-      "Uses heatmaps and motion analysis to infer behavior beyond directly visible frames.",
-      "Triggers real-time alerts with image capture for loitering, restricted areas, and suspicious movement.",
+      "Turns raw fitness activity into structured coaching insights for athletes and teams.",
+      "Combines secure OAuth integration with real-time analytics for a polished product experience.",
+      "Shows how AI can create personalized guidance from live performance data.",
     ],
   },
   {
-    title: "Smart Attendance System",
-    category: "Face Recognition System",
+    title: "Automated Video Shorts Generation System",
+    category: "Media Automation Pipeline",
+    year: "2025",
+    status: "Celery + Redis",
+    intro:
+      "Designed a scalable workflow for producing vertical video content with voiceover sync and asynchronous rendering.",
+    description:
+      "Built a Next.js and FastAPI platform for automating video generation, combining Whisper STT, ElevenLabs TTS, Pexels media sourcing, and FFmpeg rendering through Celery and Redis to orchestrate the whole pipeline.",
+    tools: ["FastAPI", "Celery", "Redis", "FFmpeg", "Whisper", "n8n"],
+    highlights: [
+      "Automates the full content production loop from source media to rendered output.",
+      "Uses asynchronous workers to keep rendering and orchestration efficient at scale.",
+      "Bridges AI voice and media tools into a cohesive workflow.",
+    ],
+  },
+  {
+    title: "Face Recognition Smart Attendance System",
+    category: "Real-Time Computer Vision",
     year: "2024",
     status: "Live Project",
     intro:
-      "A practical attendance platform that turns face recognition into a cleaner daily workflow.",
+      "A practical attendance platform that applies face recognition to everyday operational workflows.",
     description:
-      "Built to reduce manual check-ins and make attendance tracking more efficient, this system captures live input, verifies identities, and stores attendance records through a streamlined web interface. It is a hands-on application of computer vision for a real operational use case.",
+      "Developed a high-accuracy, real-time facial recognition attendance system using Python, OpenCV, and InsightFace with cosine similarity matching, backed by a Flask dashboard for enrollment and analytics.",
     tools: ["Python", "OpenCV", "InsightFace", "Flask"],
     highlights: [
       "Automates identity-based attendance with a simple end-user interface.",
@@ -60,40 +71,19 @@ const projects: Project[] = [
     github: "https://github.com/Akshay-Dahiya/face-recognition-attendance-system",
   },
   {
-    title: "Fog Vision AI System",
-    category: "Low-Visibility Computer Vision",
-    year: "2024",
-    status: "Research Build",
-    intro:
-      "A computer vision exploration aimed at improving scene understanding in foggy conditions.",
-    description:
-      "This project focuses on making vision systems more dependable when weather reduces clarity. Using deep learning approaches with fog-related datasets, it investigates how models can preserve useful perception even when raw visibility drops significantly.",
-    tools: [
-      "Deep Learning",
-      "Princeton Dataset",
-      "Image Restoration",
-      "Scene Understanding",
-    ],
-    highlights: [
-      "Targets an important real-world weakness in outdoor vision systems.",
-      "Explores model behavior when raw imagery becomes difficult to interpret.",
-      "Connects research-style experimentation with applied visual intelligence.",
-    ],
-  },
-  {
-    title: "Video Shorts Generator",
-    category: "Automation Pipeline",
+    title: "Personal Portfolio Website",
+    category: "Interactive Developer Portfolio",
     year: "2025",
-    status: "Workflow Automation",
+    status: "Responsive Web Build",
     intro:
-      "A content production pipeline designed to reduce repetitive editing work for short-form video.",
+      "A visually engaging portfolio designed to present AI engineering work with clarity and impact.",
     description:
-      "Created as an automation-first workflow, this system links repeatable content generation steps so raw inputs can move toward short-form output with less manual effort. The focus is speed, consistency, and making production easier to scale.",
-    tools: ["n8n", "Workflow Automation", "Content Ops", "Process Design"],
+      "Built a responsive React and Vite portfolio with thoughtful motion, semantic structure, and performance-conscious asset delivery to showcase projects, capabilities, and contact information.",
+    tools: ["React", "TypeScript", "Vite", "GSAP"],
     highlights: [
-      "Automates repetitive steps that usually slow down short-form production.",
-      "Turns fragmented creation work into a more reliable repeatable system.",
-      "Shows how automation can improve both speed and consistency.",
+      "Balances visual storytelling with strong technical polish and usability.",
+      "Presents the work in a concise way for recruiters, collaborators, and hiring teams.",
+      "Shows how product thinking and engineering come together in a portfolio experience.",
     ],
   },
 ];

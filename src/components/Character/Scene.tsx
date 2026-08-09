@@ -23,6 +23,7 @@ const Scene = () => {
     if (canvasDiv.current) {
       const isTouchViewport = window.matchMedia("(pointer: coarse)").matches;
       let isDisposed = false;
+      let isInViewport = true;
       let rect = canvasDiv.current.getBoundingClientRect();
       let container = { width: rect.width, height: rect.height };
       const aspect = container.width / container.height;
@@ -35,7 +36,7 @@ const Scene = () => {
       });
       renderer.setSize(container.width, container.height);
       renderer.setPixelRatio(
-        Math.min(window.devicePixelRatio, isTouchViewport ? 0.9 : 1)
+        Math.min(window.devicePixelRatio, isTouchViewport ? 0.7 : 1)
       );
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1;
@@ -113,9 +114,19 @@ const Scene = () => {
         pageVisible = !document.hidden;
       };
 
+      const intersectionObserver = new IntersectionObserver(
+        ([entry]) => {
+          isInViewport = entry?.isIntersecting ?? true;
+        },
+        {
+          threshold: 0.1,
+        }
+      );
+
       document.addEventListener("mousemove", onMouseMove);
       document.addEventListener("visibilitychange", onVisibilityChange);
       window.addEventListener("resize", onResize);
+      intersectionObserver.observe(canvasDiv.current);
       const landingDiv = document.getElementById("landingDiv");
       if (landingDiv) {
         landingDiv.addEventListener("touchmove", onTouchMove, { passive: true });
@@ -124,11 +135,11 @@ const Scene = () => {
 
       const animate = (time = 0) => {
         animationFrame = requestAnimationFrame(animate);
-        if (!pageVisible) {
+        if (!pageVisible || !isInViewport) {
           return;
         }
 
-        if (isTouchViewport && time - lastFrameTime < 1000 / 30) {
+        if (isTouchViewport && time - lastFrameTime < 1000 / 24) {
           return;
         }
         lastFrameTime = time;
@@ -157,6 +168,7 @@ const Scene = () => {
         isDisposed = true;
         cancelAnimationFrame(animationFrame);
         scene.clear();
+        intersectionObserver.disconnect();
         renderer.dispose();
         window.removeEventListener("resize", onResize);
         document.removeEventListener("mousemove", onMouseMove);

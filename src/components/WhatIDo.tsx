@@ -8,19 +8,24 @@ const WhatIDo = () => {
     containerRef.current[index] = el;
   };
   useEffect(() => {
-    if (ScrollTrigger.isTouch) {
-      containerRef.current.forEach((container) => {
-        if (container) {
-          container.classList.remove("what-noTouch");
-          container.addEventListener("click", () => handleClick(container));
-        }
-      });
+    if (!ScrollTrigger.isTouch || window.innerWidth <= 768) {
+      return;
     }
+
+    const listeners = containerRef.current
+      .filter((container): container is HTMLDivElement => Boolean(container))
+      .map((container) => {
+        container.classList.remove("what-noTouch");
+
+        const handleContainerClick = () => handleClick(container);
+        container.addEventListener("click", handleContainerClick);
+
+        return { container, handleContainerClick };
+      });
+
     return () => {
-      containerRef.current.forEach((container) => {
-        if (container) {
-          container.removeEventListener("click", () => handleClick(container));
-        }
+      listeners.forEach(({ container, handleContainerClick }) => {
+        container.removeEventListener("click", handleContainerClick);
       });
     };
   }, []);
@@ -88,10 +93,9 @@ const WhatIDo = () => {
 
             <div className="what-content-in">
               <h3>AI & VISION</h3>
-              <h4>Intelligence & Analytics</h4>
+              <h4>Perception, Intelligence & Analytics</h4>
               <p>
-                Developing real-time machine learning systems and distributed AI agents.
-                Specializing in computer vision models and surveillance analytics.
+                I build real-time computer vision systems and intelligent AI experiences that turn visual data into actionable insight, from face recognition to media automation and analytics-driven products.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
@@ -99,8 +103,8 @@ const WhatIDo = () => {
                 <div className="what-tags">OpenCV</div>
                 <div className="what-tags">InsightFace</div>
                 <div className="what-tags">Deep Learning</div>
-                <div className="what-tags">TouchDesigner</div>
-                <div className="what-tags">Topaz AI</div>
+                <div className="what-tags">Whisper</div>
+                <div className="what-tags">FFmpeg</div>
               </div>
               <div className="what-arrow"></div>
             </div>
@@ -125,19 +129,18 @@ const WhatIDo = () => {
             <div className="what-corner"></div>
             <div className="what-content-in">
               <h3>AUTOMATION</h3>
-              <h4>Intelligent Workflows</h4>
+              <h4>Agentic Workflows & Systems</h4>
               <p>
-                Building distributed AI systems, multi-agent architectures,
-                and automated media pipelines.
+                I design scalable AI workflows and automation stacks that connect APIs, media tools, data pipelines, and evaluation systems into smooth, reliable products.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
-                <div className="what-tags">OpenClaw</div>
-                <div className="what-tags">ClawDBot</div>
                 <div className="what-tags">n8n</div>
-                <div className="what-tags">Python</div>
-                <div className="what-tags">JavaScript</div>
-                <div className="what-tags">Power BI</div>
+                <div className="what-tags">FastAPI</div>
+                <div className="what-tags">Next.js</div>
+                <div className="what-tags">Celery</div>
+                <div className="what-tags">Redis</div>
+                <div className="what-tags">PostgreSQL</div>
               </div>
               <div className="what-arrow"></div>
             </div>

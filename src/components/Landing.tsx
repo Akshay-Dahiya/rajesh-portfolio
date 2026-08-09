@@ -3,14 +3,19 @@ import "./styles/Landing.css";
 
 const Landing = ({ children }: PropsWithChildren) => {
   useEffect(() => {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      return;
+    }
+
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const elements = document.querySelectorAll(".hacker-text");
+    const cleanups: Array<() => void> = [];
 
     elements.forEach(element => {
       let interval: number | null = null;
       const target = element as HTMLElement;
 
-      target.onmouseover = () => {
+      const handleMouseOver = () => {
         let iteration = 0;
         clearInterval(interval as number);
 
@@ -32,7 +37,17 @@ const Landing = ({ children }: PropsWithChildren) => {
           iteration += 1 / 3;
         }, 30);
       };
+
+      target.addEventListener("mouseover", handleMouseOver);
+      cleanups.push(() => {
+        clearInterval(interval as number);
+        target.removeEventListener("mouseover", handleMouseOver);
+      });
     });
+
+    return () => {
+      cleanups.forEach(cleanup => cleanup());
+    };
   }, []);
 
   return (
@@ -48,14 +63,14 @@ const Landing = ({ children }: PropsWithChildren) => {
             </h1>
           </div>
           <div className="landing-info">
-            <h3>Software</h3>
+            <h3>AI / ML</h3>
             <h2 className="landing-info-h2">
-              <div className="landing-h2-1">Engineer</div>
-              <div className="landing-h2-2">Developer</div>
+              <div className="landing-h2-1">Software</div>
+              <div className="landing-h2-2">Engineer</div>
             </h2>
             <h2>
-              <div className="landing-h2-info">Developer</div>
-              <div className="landing-h2-info-1">Engineer</div>
+              <div className="landing-h2-info">Computer Vision</div>
+              <div className="landing-h2-info-1">Automation</div>
             </h2>
           </div>
         </div>
